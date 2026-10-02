@@ -5,7 +5,9 @@ High-performance replacement for React Native's FlatList, built on recycling pri
 ## Source Layout
 
 - `src/` — library source code (TypeScript)
-- `fixture/react-native/` — React Native test/demo app
+- `fixture/react-native/` — React Native test/demo app (consumes `dist/` via `link:../../`)
+- `fixture/web/` — Expo/react-native-web fixture (not in CI)
+- `documentation/` — Docusaurus docs site (`documentation/docs/` is the v2 user docs)
 - `dist/` — compiled output (NOT auto-rebuilt on branch switch)
 
 ## Key Constraint
@@ -22,6 +24,8 @@ yarn lint
 ```
 
 **Important:** `dist/` is NOT rebuilt on branch switch. Always run `yarn build` after checking out a different branch.
+
+Use Yarn classic (1.x) — the lockfile is v1 and there is no `packageManager` field, so a Yarn 2+/corepack binary fails with "package doesn't seem to be present in your lockfile". Fallback for tests: `node_modules/.bin/jest <pattern> --forceExit`.
 
 ## Node Version
 
@@ -87,3 +91,8 @@ When you discover something important during a session — a pitfall, a non-obvi
 - Include the update in the same PR as the fix (not a separate PR)
 - Keep entries concise — one line per pitfall, with enough context to be useful
 - On CI, only add critical learnings (things that would cause repeated failures). Minor improvements should wait for interactive sessions.
+
+## Agent docs
+
+- [docs/agents/project-health.md](docs/agents/project-health.md): maintenance activity, backing, license, alternatives, contribution norms. Snapshot from 2026-10-02; rerun index-github for current numbers.
+- [docs/agents/index.md](docs/agents/index.md): read before exploring the code. Architecture, area map, where to look, usage and extension, contributing. Generated from an earlier commit; verify details against the code.
